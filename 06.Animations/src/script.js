@@ -43,6 +43,7 @@ renderer.setSize(sizes.width, sizes.height)
 // let time = Date.now()
 // const clock = new THREE.Clock()
 gsap.to(mesh.position, { duration: 1, delay: 1, x: 2 })
+gsap.to(mesh.position, { duration: 1, delay: 1, x: 0 })
 
 const tick = () => {
     // const elapsedTime = clock.getElapsedTime()
