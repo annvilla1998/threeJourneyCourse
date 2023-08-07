@@ -9,11 +9,14 @@ THREE.ColorManagement.enabled = false
 const gui = new dat.GUI()
 
 const parameters = {
-    materialColor: '#ffeded'
+    materialColor: '#ff0000'
 }
 
 gui
     .addColor(parameters, 'materialColor')
+    .onChange(() => {
+        material.color.set(parameters.materialColor)
+    })
 
 /**
  * Base
@@ -23,6 +26,7 @@ const canvas = document.querySelector('canvas.webgl')
 
 // Scene
 const scene = new THREE.Scene()
+
 
 /**
  * Objects
@@ -34,15 +38,24 @@ const mesh1 = new THREE.Mesh(
     material
 )
 const mesh2 = new THREE.Mesh(
-    new THREE.ConeGeometry(1,0.4,16,60),
+    new THREE.ConeGeometry(1,2,32),
     material
 )
 const mesh3 = new THREE.Mesh(
-    new THREE.TorusKnotGeometry(1,0.4,16,60),
+    new THREE.TorusKnotGeometry(0.8,0.35,100,16),
     material
 )
 
 scene.add(mesh1, mesh2, mesh3)
+
+
+/**
+ * Lights 
+ */
+const directionalLight = new THREE.DirectionalLight('#ffffff', 1)
+directionalLight.position.set(1, 1, 0)
+scene.add(directionalLight)
+
 
 /**
  * Sizes
